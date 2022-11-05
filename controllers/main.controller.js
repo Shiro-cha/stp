@@ -32,7 +32,7 @@ module.exports = {
             const urlObject = url.parse(fileContain.addressGithub)
             console.log("Pull from reposistory: "+fileContain.addressGithub);
             const remote=`${urlObject.protocol}//${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
-            console.log(remote);
+            
             git.pull(remote,branch,function(err,log){
               if(err){
                 console.log(err.message || "Unkown error");
@@ -55,7 +55,7 @@ module.exports = {
                       const targetPath = option.target || arrayPathNoDot.split(".")[0]
 
                       ssh.on("ready",()=>{
-                          console.log("[Success: Server]");
+
                           console.log();
                           ssh.exec(`cd ${targetPath} && git pull ${remote} ${branch}`,(err,stream)=>{
 
@@ -70,7 +70,7 @@ module.exports = {
                               })
                           })
                       })
- 
+
                       ssh.on("error",err=>{
                           console.log(err.message || "Unkown error");
                       })
