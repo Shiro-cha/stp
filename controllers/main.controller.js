@@ -26,7 +26,7 @@ module.exports = {
         git.commit(`${messageString}`,function(err){
           console.log("commit: finish...OK");
           console.log("Pull from reposistory");
-          console.log(url);
+          console.log(url.parse(fileContain.addressGithub));
         })
       })
 
