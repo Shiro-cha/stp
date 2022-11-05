@@ -14,6 +14,8 @@ module.exports = {
     let reposPath = dir || cwd()
     const fileContain = JSON.parse(fs.readFileSync(fileConfig).toString())
     const messageString = option.message || fileContain.defautMessage || "Message by stp"
+    const branch = option.branch || fileContain.branch
+
     if(!path.isAbsolute(reposPath)){
       reposPath=path.join(cwd(),reposPath)
     }
@@ -26,7 +28,18 @@ module.exports = {
         git.commit(`${messageString}`,function(err){
           console.log("commit: finish...OK");
           console.log("Pull from reposistory");
-          console.log(url.parse(fileContain.addressGithub));
+          if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub){
+            const urlObject = url.parse(fileContain.addressGithub)
+            console.log(urlObject);
+            const remote=`${urlObject.protocol}://${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}`
+
+          }else{
+            console.log("       Please set configuration using \"set config [options]\"");
+            console.log("addressGithub [*]");
+            console.log("userGithub [*]");
+            console.log("passwordGithub [*]");
+          }
+
         })
       })
 

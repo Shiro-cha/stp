@@ -13,6 +13,7 @@ program.command("config").description("command to configure environnement")
 .option("-uG | --user-github <username>","set username for github")
 .option("-pG | --password-github <password>","set password for github user")
 .option("-M | --default-message <message>","set commit default message")
+.option("-B | --branch <branch>","set commit default message")
 .action(require("./controllers/config.controller").setConfiguration)
 
 //command stp reset
@@ -42,6 +43,7 @@ program.command("ask").description("command to ask github reposistory or / and v
 program.name("stp").description("Command line to automate push and pull on github from a vps").version("0.0.1")
 .argument("[path]","To specify the path to the local reposistory")
 .option("-m | --message <message>","To specify the message")
+.option("-B | --branch <branch>","To specify the branch to pull/push")
 .action(require("./controllers/main.controller").sendPushPull)
 
 //parse command
