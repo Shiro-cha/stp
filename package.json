@@ -1,0 +1,13 @@
+{
+  "name": "cli-tools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Shiro-cha/stp.git",
+  "author": "Shiro-cha <noum.rzdr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^9.4.1",
+    "simple-git": "^3.14.1",
+    "ssh2": "^1.11.0"
+  }
+}

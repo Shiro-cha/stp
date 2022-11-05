@@ -1,0 +1,37 @@
+#!/bin/nodejs
+const {program} = require("commander")
+
+
+//command stp config
+
+program.command("config").description("command to configure environnement")
+.option("-uS | --user-server <username>","set username for server")
+.option("-a | --address-server <address>","set address for server")
+.option("-p | --password-server <password>","set password for user in server")
+.option("-pr | --port <port>","set port for server")
+.option("-gR | --github-reposistory <reposistory>","set github reposistory to push file")
+.option("-uG | --user-github <username>","set username for github")
+.option("-pS | --password-github <password>","set password for github user")
+.action(require("./controllers/config.controller").setConfiguration)
+
+//command stp reset
+
+program.command("reset").description("command to reset configurations, without any flag it reset all configuration")
+.option("-uS | --user-server","reset username for server")
+.option("-a | --address-server","reset address for server")
+.option("-p | --password-server","reset password for user in server")
+.option("-pr | --port","reset port for server")
+.option("-gR | --github-reposistory","reset username for github")
+.option("-pS | --password-github","reset password for github user")
+.action(require("./controllers/config.controller").resetConfiguration)
+
+//command stp ask
+
+
+//program par defaut stp [options]
+program.name("stp").description("Command line to automate push and pull on github from a vps").version("0.0.1").action(function(){
+  console.log("Hello world")
+})
+
+//parse command
+program.parse()
