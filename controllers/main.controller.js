@@ -35,9 +35,18 @@ module.exports = {
             console.log(remote);
             git.pull(remote,branch,function(err,log){
               if(err){
-                console.log(err);
+                console.log(err.message || "Unkown error");
               }else{
-                console.log(log);
+                //push on this remote
+                console.log("Pull...OK");
+                console.log("Push to reposistory: "+fileContain.addressGithub);
+                git.push(remote,branch,function(err,log){
+                  if(err){
+                    console.log(err.message || "Unkown error");
+                  }else{
+                    console.log("Push...OK");
+                  }
+                })
               }
             })
           }else{
