@@ -35,15 +35,13 @@ program.command("ask").description("command to ask github reposistory or / and v
 .option("-aS | --address-server <address>","specify address for server")
 .option("-pS | --password-server <password>","specify password for user in server")
 .option("-pr | --port <port>","specify port for server")
-.option("-aG | --address-github <address>","specify username for github")
-.option("-uG | --user-github <username>","specify username for github")
-.option("-pG | --password-github <password>","specify password for github user")
 .action(require("./controllers/ask.controller").checking)
 
 //program par defaut stp [options]
-program.name("stp").description("Command line to automate push and pull on github from a vps").version("0.0.1").action(function(){
-  console.log("Hello world")
-})
+program.name("stp").description("Command line to automate push and pull on github from a vps").version("0.0.1")
+.argument("[path]","To specify the path to the local reposistory")
+.option("-m | --message <message>","To specify the message")
+.action(require("./controllers/main.controller").sendPushPull)
 
 //parse command
 program.parse()

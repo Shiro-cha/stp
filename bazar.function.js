@@ -6,14 +6,14 @@ module.exports={
 
     //verify if the file confiuration contain something
    const data =  fs.readFileSync(fileConfig)
-    
+
     const fileContain = JSON.parse(data.toString())
-    
+
     if(typeof fileContain === "object"){
         for(option in options){
-            
+
             fileContain[option] = options[option] || ""
-            
+
         }
         fs.writeFile(fileConfig,JSON.stringify(fileContain),err=>{
             if(err){
@@ -43,7 +43,7 @@ module.exports={
         }
     }else{
         console.log("       There is no configuration yet")
-        
+
     }
     console.log();
 
@@ -65,14 +65,14 @@ module.exports={
             console.log("[Success: Server]");
             console.log();
             ssh.exec("whoami",(err,stream)=>{
-                
+
                 stream.on("close",err=>{
-                    
+
                     if(err) throw err
                     ssh.end()
                 })
                 stream.on("data",data=>{
-                    
+
                     console.log("   Connected as: "+data.toString());
                 })
             })
@@ -81,7 +81,7 @@ module.exports={
         ssh.on("error",err=>{
             console.log(err.message || "Unkown error");
         })
-        
+
         ssh.connect({
             user:flags.userServer,
             host:flags.addressServer,
@@ -93,28 +93,7 @@ module.exports={
 
   },
 
-  askGithub:(SimpleGit,flags)=>{
-    const git  = new SimpleGit()
-    //verify flags
-    
-    if(!flags.addressGithub || (!flags.userGithub && !flags.passwordGithub) ){
-        
-        console.log("[Error: Github]");
-        console.log("       Please set configuration using \"set config [options]\" or use flags to this command using \"set ask [options]\" ");
-        console.log()
-    }else{
-        git.fetch(flags.addressGithub).then((smtg)=>{
-            console.log(smtg)
-        }).catch((err)=>{
-            if(err){
-                console.log("[Error: Github]");
-                console.log("    "+err.message);
-                console.log()
-            }
-            
-        })
-    }
-}
+
 
 
 }

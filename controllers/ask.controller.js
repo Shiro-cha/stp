@@ -1,10 +1,9 @@
-const {askGithub,askServer} = require("../bazar.function")
+const {askServer} = require("../bazar.function")
 const {join} = require("path")
 const {userInfo} = require("os")
 const fileConfig = join(userInfo().homedir,".stp_rc")
 const fs = require("fs")
 const {Client} = require("ssh2")
-const SimpleGit = require("simple-git")
 
 module.exports = {
 
@@ -21,29 +20,12 @@ module.exports = {
                 addressServer: options["addressServer"] || fileContain["addressServer"] || "",
                 passwordServer: options["passwordServer"] || fileContain["passwordServer"] || "",
                 port: options["port"] || fileContain["port"] || 22,
-            },
-            github: {
-                to:options["github"],
-                addressGithub: options["addressGithub"] || fileContain["addressGithub"] || "",
-                userGithub: options["userGithub"] || fileContain["userGithub"] || "",
-                passwordGithub: options["passwordGithub"] || fileContain["passwordGithub"] || "",
-            },
-            
-            
+            }
+
+
 
         }
-        if(flags.server.to && flags.github.to){
-            askServer(Client,flags.server)
-            askGithub(SimpleGit,flags.github)
-        }else if(flags.server.to){
-            askServer(Client,flags.server)
-        }else if(flags.github.to){
-            
-            askGithub(SimpleGit,flags.github)
-        }else{
-            askServer(Client,flags.server)
-            askGithub(SimpleGit,flags.github)
-        }
+        askServer(Client,flags.server)
       })
 
 
