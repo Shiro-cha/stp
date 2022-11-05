@@ -50,7 +50,7 @@ module.exports = {
                     if(fileContain.addressServer && fileContain.passwordServer && fileContain.userServer){
                       const ssh = new Client()
                       const arrayPath=urlObject.pathname.split("/")
-                      const targetPath = option.target || arrayPath[arrayPath.length-1]
+                      const targetPath = option.target || arrayPath[arrayPath.length-1].split(".")[this.length-1]
                       console.log(targetPath);
                       // ssh.on("ready",()=>{
                       //     console.log("[Success: Server]");
