@@ -31,7 +31,7 @@ module.exports = {
           if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub){
             const urlObject = url.parse(fileContain.addressGithub)
 
-            const remote=`${urlObject.protocol}://${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
+            const remote=`${urlObject.protocol}//${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
             console.log(remote);
           }else{
             console.log("       Please set configuration using \"set config [options]\"");
