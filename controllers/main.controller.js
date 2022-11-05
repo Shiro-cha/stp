@@ -52,7 +52,7 @@ module.exports = {
                       const arrayPath=urlObject.pathname.split("/")
                       const arrayPathNoDot = arrayPath[arrayPath.length-1] || "."
                       console.log(arrayPathNoDot.split("."));
-                      const targetPath = option.target || arrayPathNoDot.split(".")[arrayPathNoDot.length-1]
+                      const targetPath = option.target || arrayPathNoDot.split(".")[0]
                       console.log(targetPath);
                       // ssh.on("ready",()=>{
                       //     console.log("[Success: Server]");
