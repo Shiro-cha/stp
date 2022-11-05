@@ -35,9 +35,9 @@ module.exports = {
 
           }else{
             console.log("       Please set configuration using \"set config [options]\"");
-            console.log("addressGithub [*]");
-            console.log("userGithub [*]");
-            console.log("passwordGithub [*]");
+            console.log("       address-github [*]");
+            console.log("       user-github [*]");
+            console.log("       password-github [*]");
           }
 
         })
