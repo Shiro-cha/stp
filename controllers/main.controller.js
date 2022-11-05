@@ -49,7 +49,7 @@ module.exports = {
                     console.log("Pulling from the vps server ");
                     if(fileContain.addressServer && fileContain.passwordServer && fileContain.userServer){
                       const ssh = new Client()
-                      const targetPath = option.target || urlObject.pathname.split("/")[urlObject.pathname.length-1].split(".")[urlObject.pathname.split("/")[urlObject.pathname.length-1].lenght-1]
+                      const targetPath = option.target || urlObject.pathname.split("/")[urlObject.pathname.length-1]
                       console.log(targetPath);
                       // ssh.on("ready",()=>{
                       //     console.log("[Success: Server]");
