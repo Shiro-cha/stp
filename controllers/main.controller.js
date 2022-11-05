@@ -27,10 +27,10 @@ module.exports = {
       git.add(".").then(function(){
         git.commit(`${messageString}`,function(err){
           console.log("commit: finish...OK");
-          console.log("Pull from reposistory");
+
           if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub){
             const urlObject = url.parse(fileContain.addressGithub)
-
+            console.log("Pull from reposistory: "+fileContain.addressGithub);
             const remote=`${urlObject.protocol}//${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
             console.log(remote);
           }else{
