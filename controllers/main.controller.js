@@ -5,9 +5,10 @@ const SimpleGit = require("simple-git")
 
 
 module.exports = {
-  sendPushPull:(dir,message)=>{
+  sendPushPull:(dir,option)=>{
     let reposPath = dir || cwd()
-    const messageString = message
+    console.log();
+    const messageString = option.message || "Message by stp"
     if(!path.isAbsolute(reposPath)){
       reposPath=path.join(cwd(),reposPath)
     }
