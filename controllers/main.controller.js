@@ -30,9 +30,9 @@ module.exports = {
           console.log("Pull from reposistory");
           if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub){
             const urlObject = url.parse(fileContain.addressGithub)
-            console.log(urlObject);
-            const remote=`${urlObject.protocol}://${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}`
 
+            const remote=`${urlObject.protocol}://${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
+            console.log(remote);
           }else{
             console.log("       Please set configuration using \"set config [options]\"");
             console.log("       address-github [*]");
