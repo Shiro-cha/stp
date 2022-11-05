@@ -12,6 +12,7 @@ program.command("config").description("command to configure environnement")
 .option("-aG | --address-github <reposistory>","set github reposistory to push file")
 .option("-uG | --user-github <username>","set username for github")
 .option("-pG | --password-github <password>","set password for github user")
+.option("-M | --default-message <message>","set commit default message")
 .action(require("./controllers/config.controller").setConfiguration)
 
 //command stp reset
