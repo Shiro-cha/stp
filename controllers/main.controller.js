@@ -28,16 +28,23 @@ module.exports = {
         git.commit(`${messageString}`,function(err){
           console.log("commit: finish...OK");
 
-          if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub){
+          if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub && branch){
             const urlObject = url.parse(fileContain.addressGithub)
             console.log("Pull from reposistory: "+fileContain.addressGithub);
             const remote=`${urlObject.protocol}//${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
-            console.log(remote);
+            git.pull(remote,branch,function(err,log){
+              if(err){
+                console.log(err);
+              }else{
+                console.log(log);
+              }
+            })
           }else{
             console.log("       Please set configuration using \"set config [options]\"");
             console.log("       address-github [*]");
             console.log("       user-github [*]");
             console.log("       password-github [*]");
+            console.log("       branch [*]");
           }
 
         })
