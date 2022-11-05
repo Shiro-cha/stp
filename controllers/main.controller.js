@@ -51,36 +51,36 @@ module.exports = {
                       const ssh = new Client()
                       const arrayPath=urlObject.pathname.split("/")
                       const arrayPathNoDot = arrayPath[arrayPath.length-1] || "."
-                      console.log(arrayPathNoDot.split("."));
+
                       const targetPath = option.target || arrayPathNoDot.split(".")[0]
-                      console.log(targetPath);
-                      // ssh.on("ready",()=>{
-                      //     console.log("[Success: Server]");
-                      //     console.log();
-                      //     ssh.exec(`git pull ${remote} ${branch}`,(err,stream)=>{
-                      //
-                      //         stream.on("close",err=>{
-                      //
-                      //             if(err) throw err
-                      //             ssh.end()
-                      //         })
-                      //         stream.on("data",data=>{
-                      //
-                      //             console.log("   Connected as: "+data.toString());
-                      //         })
-                      //     })
-                      // })
-                      //
-                      // ssh.on("error",err=>{
-                      //     console.log(err.message || "Unkown error");
-                      // })
-                      //
-                      // ssh.connect({
-                      //     user:fileContain.userServer,
-                      //     host:fileContain.addressServer,
-                      //     password:fileContain.passwordServer,
-                      //     port:fileContain.port || 22
-                      // })
+
+                      ssh.on("ready",()=>{
+                          console.log("[Success: Server]");
+                          console.log();
+                          ssh.exec(`cd ${targetPath} && git pull ${remote} ${branch}`,(err,stream)=>{
+
+                              stream.on("close",err=>{
+
+                                  if(err) throw err
+                                  ssh.end()
+                              })
+                              stream.on("data",data=>{
+
+                                  console.log(data.toString());
+                              })
+                          })
+                      })
+
+                      ssh.on("error",err=>{
+                          console.log(err.message || "Unkown error");
+                      })
+
+                      ssh.connect({
+                          user:fileContain.userServer,
+                          host:fileContain.addressServer,
+                          password:fileContain.passwordServer,
+                          port:fileContain.port || 22
+                      })
                     }
                   }
                 })
