@@ -33,13 +33,13 @@ module.exports = {
             console.log("Pull from reposistory: "+fileContain.addressGithub);
             const remote=`${urlObject.protocol}//${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
             console.log(remote);
-            // git.pull(remote,branch,function(err,log){
-            //   if(err){
-            //     console.log(err);
-            //   }else{
-            //     console.log(log);
-            //   }
-            // })
+            git.pull(remote,branch,function(err,log){
+              if(err){
+                console.log(err);
+              }else{
+                console.log(log);
+              }
+            })
           }else{
             console.log("       Please set configuration using \"set config [options]\"");
             console.log("       address-github [*]");
