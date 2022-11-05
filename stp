@@ -44,6 +44,7 @@ program.name("stp").description("Command line to automate push and pull on githu
 .argument("[path]","To specify the path to the local reposistory")
 .option("-m | --message <message>","To specify the message")
 .option("-B | --branch <branch>","To specify the branch to pull/push")
+.option("-t | --target <target>","To specify the path on the vps, by default it the same as the reposistory name")
 .action(require("./controllers/main.controller").sendPushPull)
 
 //parse command

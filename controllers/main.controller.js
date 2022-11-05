@@ -45,6 +45,39 @@ module.exports = {
                     console.log(err.message || "Unkown error");
                   }else{
                     console.log("Push...OK");
+                    console.log();
+                    console.log("Pulling from the vps server ");
+                    if(fileContain.addressServer && fileContain.passwordServer && fileContain.userServer){
+                      const ssh = new Client()
+                      console.log(urlObject);
+                      // ssh.on("ready",()=>{
+                      //     console.log("[Success: Server]");
+                      //     console.log();
+                      //     ssh.exec(`git pull ${remote} ${branch}`,(err,stream)=>{
+                      //
+                      //         stream.on("close",err=>{
+                      //
+                      //             if(err) throw err
+                      //             ssh.end()
+                      //         })
+                      //         stream.on("data",data=>{
+                      //
+                      //             console.log("   Connected as: "+data.toString());
+                      //         })
+                      //     })
+                      // })
+                      //
+                      // ssh.on("error",err=>{
+                      //     console.log(err.message || "Unkown error");
+                      // })
+                      //
+                      // ssh.connect({
+                      //     user:fileContain.userServer,
+                      //     host:fileContain.addressServer,
+                      //     password:fileContain.passwordServer,
+                      //     port:fileContain.port || 22
+                      // })
+                    }
                   }
                 })
               }
