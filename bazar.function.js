@@ -58,18 +58,20 @@ module.exports={
         console.log()
         console.log("[Error: Server]");
         console.log("       Please set configuration using \"set config [options]\" or use flags to this command using \"set ask [options]\" ");
+        console.log()
     }else{
 
         ssh.on("ready",()=>{
             console.log("[Success: Server]");
+            console.log();
             ssh.exec("whoami",(err,stream)=>{
                 
-                stream.on("close",(err)=>{
+                stream.on("close",err=>{
                     
                     if(err) throw err
                     ssh.end()
                 })
-                stream.on("data",(data)=>{
+                stream.on("data",data=>{
                     
                     console.log("   Connected as: "+data.toString());
                 })
@@ -94,13 +96,23 @@ module.exports={
   askGithub:(SimpleGit,flags)=>{
     const git  = new SimpleGit()
     //verify flags
-
-    if(!flags.addressGithub || !flags.userGithub || !flags.passwordGithub ){
-        console.log()
+    
+    if(!flags.addressGithub || (!flags.userGithub && !flags.passwordGithub) ){
+        
         console.log("[Error: Github]");
         console.log("       Please set configuration using \"set config [options]\" or use flags to this command using \"set ask [options]\" ");
+        console.log()
     }else{
-        console.log("Gooo");
+        git.fetch(flags.addressGithub).then((smtg)=>{
+            console.log(smtg)
+        }).catch((err)=>{
+            if(err){
+                console.log("[Error: Github]");
+                console.log("    "+err.message);
+                console.log()
+            }
+            
+        })
     }
 }
 

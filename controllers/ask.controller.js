@@ -16,14 +16,14 @@ module.exports = {
         const fileContain = JSON.parse(data.toString())
         const flags = {
             server: {
-                to:options["server"] || fileContain["server"] || "",
+                to:options["server"],
                 userServer: options["userServer"] || fileContain["userServer"] || "",
                 addressServer: options["addressServer"] || fileContain["addressServer"] || "",
                 passwordServer: options["passwordServer"] || fileContain["passwordServer"] || "",
                 port: options["port"] || fileContain["port"] || 22,
             },
             github: {
-                to:options["github"] || fileContain["github"] || "",
+                to:options["github"],
                 addressGithub: options["addressGithub"] || fileContain["addressGithub"] || "",
                 userGithub: options["userGithub"] || fileContain["userGithub"] || "",
                 passwordGithub: options["passwordGithub"] || fileContain["passwordGithub"] || "",
@@ -35,9 +35,10 @@ module.exports = {
         if(flags.server.to && flags.github.to){
             askServer(Client,flags.server)
             askGithub(SimpleGit,flags.github)
-        }else if(flags.server){
+        }else if(flags.server.to){
             askServer(Client,flags.server)
-        }else if(flags.github){
+        }else if(flags.github.to){
+            
             askGithub(SimpleGit,flags.github)
         }else{
             askServer(Client,flags.server)
