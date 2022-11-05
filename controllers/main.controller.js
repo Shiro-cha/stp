@@ -51,6 +51,7 @@ module.exports = {
                       const ssh = new Client()
                       const arrayPath=urlObject.pathname.split("/")
                       const arrayPathNoDot = arrayPath[arrayPath.length-1] || "."
+                      console.log(arrayPathNoDot);
                       const targetPath = option.target || arrayPathNoDot.split(".")[arrayPathNoDot.length-1]
                       console.log(targetPath);
                       // ssh.on("ready",()=>{
