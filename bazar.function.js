@@ -47,7 +47,62 @@ module.exports={
     }
     console.log();
 
-  }
+  },
+
+  //ask.controller
+  askServer:(Client,flags)=>{
+    const ssh = new Client()
+    //verify flags
+
+    if(!flags.userServer && !flags.addressServer && !flags.passwordServer && !flags.port){
+        console.log()
+        console.log("[Error: Server]");
+        console.log("       Please set configuration using \"set config [options]\" or use flags to this command using \"set ask [options]\" ");
+    }else{
+
+        ssh.on("ready",()=>{
+            console.log("[Success: Server]");
+            ssh.exec("whoami",(err,stream)=>{
+                
+                stream.on("close",(err)=>{
+                    
+                    if(err) throw err
+                    ssh.end()
+                })
+                stream.on("data",(data)=>{
+                    
+                    console.log("   Connected as: "+data.toString());
+                })
+            })
+        })
+
+        ssh.on("error",err=>{
+            console.log(err.message || "Unkown error");
+        })
+        
+        ssh.connect({
+            user:flags.userServer,
+            host:flags.addressServer,
+            password:flags.passwordServer,
+            port:flags.port
+        })
+    }
+
+
+  },
+
+  askGithub:(SimpleGit,flags)=>{
+    const git  = new SimpleGit()
+    //verify flags
+
+    if(!flags.addressGithub || !flags.userGithub || !flags.passwordGithub ){
+        console.log()
+        console.log("[Error: Github]");
+        console.log("       Please set configuration using \"set config [options]\" or use flags to this command using \"set ask [options]\" ");
+    }else{
+        console.log("Gooo");
+    }
+}
 
 
 }

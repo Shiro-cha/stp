@@ -22,11 +22,23 @@ program.command("reset").description("command to reset configurations, without a
 .option("-pS | --password-server","reset password for user in server")
 .option("-pr | --port","reset port for server")
 .option("-aG | --address-github","reset username for github")
+.option("-uG | --user-github <username>","set username for github")
 .option("-pG | --password-github","reset password for github user")
 .action(require("./controllers/config.controller").resetConfiguration)
 
 //command stp ask
 
+program.command("ask").description("command to ask github reposistory or / and vps server avaibility")
+.option("-s | --server","To specify reachability of the vps only")
+.option("-g | --github" ,"To specify github reposistory reachability only")
+.option("-uS | --user-server <username>","specify username for server")
+.option("-aS | --address-server <address>","specify address for server")
+.option("-pS | --password-server <password>","specify password for user in server")
+.option("-pr | --port <port>","specify port for server")
+.option("-aG | --address-github <address>","specify username for github")
+.option("-uG | --user-github <username>","specify username for github")
+.option("-pG | --password-github <password>","specify password for github user")
+.action(require("./controllers/ask.controller").checking)
 
 //program par defaut stp [options]
 program.name("stp").description("Command line to automate push and pull on github from a vps").version("0.0.1").action(function(){
