@@ -13,7 +13,7 @@ module.exports = {
       reposPath=path.join(cwd(),reposPath)
     }
 
-    const git = new SimpleGit(reposPath)
+    const git = new SimpleGit(reposPath) 
     console.log(reposPath);
     try{
 
