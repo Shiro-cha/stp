@@ -26,13 +26,13 @@ module.exports = {
 
       git.add(".").then(function(){
         git.commit(`${messageString}`,function(err){
-          console.log("commit: finish...OK");
+          console.log("Commit...OK");
 
           if(fileContain.addressGithub && fileContain.userGithub && fileContain.passwordGithub && branch){
             const urlObject = url.parse(fileContain.addressGithub)
             console.log("Pull from reposistory: "+fileContain.addressGithub);
             const remote=`${urlObject.protocol}//${fileContain.userGithub}:${fileContain.passwordGithub}@${urlObject.hostname}${urlObject.pathname}`
-            
+
             git.pull(remote,branch,function(err,log){
               if(err){
                 console.log(err.message || "Unkown error");
