@@ -1,7 +1,10 @@
 {
-  "name": "cli-tools",
+  "name": "stp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "stp",
+  "bin":{
+    "stp":"./stp"
+  },
   "repository": "https://github.com/Shiro-cha/stp.git",
   "author": "Shiro-cha <noum.rzdr@gmail.com>",
   "license": "MIT",
