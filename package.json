@@ -1,9 +1,9 @@
 {
   "name": "shiro_yukami",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "stp",
-  "bin":{
-    "stp":"./stp"
+  "bin": {
+    "stp": "./stp"
   },
   "repository": "https://github.com/Shiro-cha/stp.git",
   "author": "Shiro-cha <noum.rzdr@gmail.com>",
