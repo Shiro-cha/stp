@@ -61,8 +61,12 @@ module.exports = {
 
                               stream.on("close",err=>{
 
-                                  if(err) throw err
+                                  if(err){
+                                  console.log("Error on close")
+                                  }else{
                                   ssh.end()
+                                  }
+                                  
                               })
                               stream.on("data",data=>{
 
