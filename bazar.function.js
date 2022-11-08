@@ -13,7 +13,6 @@ module.exports={
         for(option in options){
 
             fileContain[option] = options[option] || ""
-
         }
         fs.writeFile(fileConfig,JSON.stringify(fileContain),err=>{
             if(err){
