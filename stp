@@ -1,7 +1,6 @@
 #!/bin/nodejs
 const {program} = require("commander")
 
-
 //command stp config
 
 program.command("config").description("command to configure environnement")

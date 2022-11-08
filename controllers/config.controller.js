@@ -1,4 +1,4 @@
-const {configure , getConfiguration} = require("../bazar.function")
+const {configure , getConfiguration} = require("../bazar.function") 
 const fs = require("fs")
 const {join} = require("path")
 const {userInfo} = require("os")
