@@ -1,8 +1,6 @@
 module.exports={
-
 //config.controller
   configure:(options,fs,fileConfig)=>{
-
 
     //verify if the file confiuration contain something
    const data =  fs.readFileSync(fileConfig)
