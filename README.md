@@ -105,8 +105,3 @@ Utilisable, modifiable, améliorable.
 [GitHub](https://github.com/Shiro-cha) — Passionné de software engineering, Linux, outils CLI et interfaces légères.
 
 ---
-
-> Ce projet représente un pont entre mon ancien moi développeur débutant et ma version actuelle orientée vers l’excellence technique. Le CLI, c’est le pouvoir. Le GUI, c’est l’accessibilité. STP sera les deux.
-
-```
-
